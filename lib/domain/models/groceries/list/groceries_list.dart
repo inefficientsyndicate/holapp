@@ -5,11 +5,19 @@ import 'package:shadcn_flutter/shadcn_flutter_experimental.dart';
 typedef GroceriesListFactory = GroceriesList Function({required String name});
 
 sealed class GroceriesList {
-  late Id id;
-  late String name;
-  late DateTime date;
-  late List<GroceriesItem> groceries;
-  late IconData icon;
+  Id id;
+  String name;
+  DateTime date;
+  List<GroceriesItem> groceries;
+  IconData icon;
+
+  GroceriesList({
+    required this.id,
+    required this.name,
+    required this.date,
+    required this.groceries,
+    required this.icon,
+  });
 
   static final Map<Type, GroceriesListFactory> _registry = {};
 
@@ -44,75 +52,57 @@ extension GroceriesListSortablePropertyExt on GroceriesListSortableProperty {
 }
 
 class DisposableGroceriesList extends GroceriesList {
-  @override
-  late Id id;
-
-  @override
-  DateTime date = DateTime.now();
-
-  @override
-  List<GroceriesItem> groceries = [];
-
-  @override
-  IconData icon = LucideIcons.list;
-
-  @override
-  String name;
-
   DisposableGroceriesList({
-    required this.id,
-    required this.name,
-    required this.date,
-    required this.groceries,
-    required this.icon,
+    required super.id,
+    required super.name,
+    required super.date,
+    required super.groceries,
+    required super.icon,
   });
 
-  DisposableGroceriesList.init({required this.name}) {
-    id = Id.init();
-    icon = LucideIcons.list;
+  factory DisposableGroceriesList.init(String name) {
+    return DisposableGroceriesList(
+      id: Id.init(),
+      name: name,
+      date: DateTime.now(),
+      groceries: [],
+      icon: LucideIcons.list,
+    );
   }
 
   static void register() {
     GroceriesList.register(
       DisposableGroceriesList,
-      ({required String name}) => DisposableGroceriesList.init(name: name),
+      ({required String name}) => DisposableGroceriesList.init(name),
     );
   }
 }
 
 class PersistentGroceriesList extends GroceriesList {
-  @override
-  late Id id;
-
-  @override
-  DateTime date = DateTime.now();
-
-  @override
-  List<GroceriesItem> groceries = [];
-
-  @override
-  IconData icon = LucideIcons.list;
-
-  @override
-  String name;
-
   List<GroceriesItem> history = [];
 
   PersistentGroceriesList({
-    required this.id,
-    required this.name,
-    required this.date,
-    required this.groceries,
+    required super.id,
+    required super.name,
+    required super.date,
+    required super.groceries,
+    required super.icon,
   });
 
-  PersistentGroceriesList.init({required this.name}) {
-    id = Id.init();
+  factory PersistentGroceriesList.init(String name) {
+    return PersistentGroceriesList(
+      id: Id.init(),
+      name: name,
+      date: DateTime.now(),
+      groceries: [],
+      icon: LucideIcons.list,
+    );
   }
 
   static void register() {
     GroceriesList.register(
       PersistentGroceriesList,
-      ({required String name}) => PersistentGroceriesList.init(name: name),
+      ({required String name}) => PersistentGroceriesList.init(name),
     );
   }
 }

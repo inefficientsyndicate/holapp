@@ -1,19 +1,21 @@
 import 'package:holapp/domain/models/common/id.dart';
 import 'package:holapp/domain/models/groceries/item/groceries_item.dart';
 import 'package:holapp/domain/models/groceries/list/groceries_list.dart';
+import 'package:shadcn_flutter/shadcn_flutter_experimental.dart';
 
 class GroceriesListRepositoryMock {
   static final instance = GroceriesListRepositoryMock();
 
   final List<GroceriesList> _lists = [
-    PersistentGroceriesList.init(name: "Rewe"),
-    DisposableGroceriesList.init(name: "Birthdaypardaaayy"),
-    PersistentGroceriesList.init(name: "Lidl"),
+    PersistentGroceriesList.init("Rewe"),
+    DisposableGroceriesList.init("Birthdaypardaaayy"),
+    PersistentGroceriesList.init("Lidl"),
     PersistentGroceriesList(
       id: Id.init(),
       name: "Aldi",
       date: DateTime.now(),
       groceries: [GroceriesItem.onePiece("item")],
+      icon: LucideIcons.list,
     ),
   ];
 
