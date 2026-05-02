@@ -1,11 +1,14 @@
-import 'package:holapp/domain/models/common/id.dart';
+import 'package:holapp/domain/models/entity/entity.dart';
+import 'package:holapp/domain/models/entity/id.dart';
 import 'package:holapp/domain/models/groceries/item/groceries_item.dart';
+import 'package:holapp/domain/models/groceries/list/groceries_list_id.dart';
 import 'package:shadcn_flutter/shadcn_flutter_experimental.dart';
 
 typedef GroceriesListFactory = GroceriesList Function({required String name});
 
-sealed class GroceriesList {
-  Id id;
+sealed class GroceriesList extends Entity<GroceriesListId> {
+  @override
+  GroceriesListId id;
   String name;
   DateTime date;
   List<GroceriesItem> groceries;
@@ -17,7 +20,7 @@ sealed class GroceriesList {
     required this.date,
     required this.groceries,
     required this.icon,
-  });
+  }) : super(id: id);
 
   static final Map<Type, GroceriesListFactory> _registry = {};
 
@@ -62,7 +65,7 @@ class DisposableGroceriesList extends GroceriesList {
 
   factory DisposableGroceriesList.init(String name) {
     return DisposableGroceriesList(
-      id: Id.init(),
+      id: GroceriesListId(value: Id.empty()),
       name: name,
       date: DateTime.now(),
       groceries: [],
@@ -91,7 +94,7 @@ class PersistentGroceriesList extends GroceriesList {
 
   factory PersistentGroceriesList.init(String name) {
     return PersistentGroceriesList(
-      id: Id.init(),
+      id: GroceriesListId(value: Id.empty()),
       name: name,
       date: DateTime.now(),
       groceries: [],

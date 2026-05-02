@@ -1,4 +1,4 @@
-import 'package:holapp/domain/models/common/id.dart';
+import 'package:holapp/domain/models/entity/id.dart';
 
 sealed class GroceriesListWrapperEvent {}
 

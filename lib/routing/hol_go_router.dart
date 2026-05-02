@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
-import 'package:holapp/domain/models/common/id.dart';
+import 'package:holapp/domain/models/entity/id.dart';
+import 'package:holapp/domain/models/groceries/list/groceries_list_id.dart';
 import 'package:holapp/ui/features/groceries/detail/wrapper/view/wrapper_page.dart';
 import 'package:holapp/ui/features/groceries/overview/groceries_lists_overview.dart';
 import 'package:holapp/ui/features/settings/settings_view.dart';
@@ -38,7 +39,7 @@ final GoRouter router = GoRouter(
               parameter: parameter,
             ));
 
-        return GroceriesListWrapperPage(id: Id(id: pathId));
+        return GroceriesListWrapperPage(id: GroceriesListId(value: pathId));
       },
     ),
     GoRoute(
@@ -58,6 +59,6 @@ class Routes {
   static const String settings = '/settings';
 
   static String detailId(Id id) {
-    return "/detail/${id.id}";
+    return "/detail/$id";
   }
 }

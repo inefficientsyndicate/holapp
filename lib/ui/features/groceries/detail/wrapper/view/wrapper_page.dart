@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:holapp/domain/models/common/id.dart';
+import 'package:holapp/domain/models/entity/id.dart';
 import 'package:holapp/domain/models/groceries/list/groceries_list.dart';
 import 'package:holapp/routing/hol_go_router.dart';
 import 'package:holapp/ui/features/groceries/detail/disposable.dart';
@@ -41,7 +41,7 @@ class GroceriesListWrapperPage extends StatelessWidget {
       null => Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(child: Text("List ${id.id} not found")),
+          Center(child: Text("List $id not found")),
           const SizedBox(height: 12),
           GhostButton(
             child: Text("Back to home"),

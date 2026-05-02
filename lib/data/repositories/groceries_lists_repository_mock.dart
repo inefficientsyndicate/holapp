@@ -1,6 +1,7 @@
-import 'package:holapp/domain/models/common/id.dart';
+import 'package:holapp/domain/models/entity/id.dart';
 import 'package:holapp/domain/models/groceries/item/groceries_item.dart';
 import 'package:holapp/domain/models/groceries/list/groceries_list.dart';
+import 'package:holapp/domain/models/groceries/list/groceries_list_id.dart';
 import 'package:shadcn_flutter/shadcn_flutter_experimental.dart';
 
 class GroceriesListRepositoryMock {
@@ -11,7 +12,7 @@ class GroceriesListRepositoryMock {
     DisposableGroceriesList.init("Birthdaypardaaayy"),
     PersistentGroceriesList.init("Lidl"),
     PersistentGroceriesList(
-      id: Id.init(),
+      id: GroceriesListId(value: Id.empty()),
       name: "Aldi",
       date: DateTime.now(),
       groceries: [GroceriesItem.onePiece("item")],
