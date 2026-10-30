@@ -37,6 +37,10 @@ dependencies:
   shadcn_ui: ^0.56.1
   flutter_it: ^2.1.2
   lucide_icons_flutter: ^3.1.17
+  shared_preferences: ^2.5.5
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +58,9 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+
+  # Generates AppLocalizations from lib/l10n/*.arb (see l10n.yaml).
+  generate: true
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
