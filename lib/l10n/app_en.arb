@@ -1,0 +1,82 @@
+{
+  "@@locale": "en",
+  "settingsTooltip": "Settings",
+  "newList": "New list",
+  "addItemPlaceholder": "Add an item…",
+  "historyTooltip": "History",
+  "deleteListTooltip": "Delete list",
+  "listPageTitleFallback": "List",
+  "listNotFound": "This list no longer exists.",
+  "nothingHereYet": "Nothing here yet. Add items below — tap one to mark it collected.",
+  "itemCount": "{count, plural, one{1 item} other{{count} items}}",
+  "@itemCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "cancel": "Cancel",
+  "create": "Create",
+  "newListDialogTitle": "New list",
+  "newListDialogDescription": "Give your grocery list a name.",
+  "newListPlaceholder": "e.g. Weekly groceries",
+  "chooseListTitle": "Add \"{itemName}\" to…",
+  "@chooseListTitle": {
+    "placeholders": {
+      "itemName": { "type": "String" }
+    }
+  },
+  "chooseListDescription": "Choose a list for this item.",
+  "deleteListDialogTitle": "Delete this list?",
+  "deleteListDialogDescription": "This will permanently delete \"{listName}\" and all of its items and history.",
+  "@deleteListDialogDescription": {
+    "placeholders": {
+      "listName": { "type": "String" }
+    }
+  },
+  "delete": "Delete",
+  "historyPageTitle": "{listName} · History",
+  "@historyPageTitle": {
+    "placeholders": {
+      "listName": { "type": "String" }
+    }
+  },
+  "nothingCollectedYet": "Nothing collected yet.",
+  "addedToListSnackbar": "Added \"{itemName}\" to {listName}",
+  "@addedToListSnackbar": {
+    "placeholders": {
+      "itemName": { "type": "String" },
+      "listName": { "type": "String" }
+    }
+  },
+  "itemAlreadyExistsSnackbar": "\"{itemName}\" is already on {listName}",
+  "@itemAlreadyExistsSnackbar": {
+    "placeholders": {
+      "itemName": { "type": "String" },
+      "listName": { "type": "String" }
+    }
+  },
+  "settingsPageTitle": "Settings",
+  "tilesPerRow": "Tiles per row",
+  "listsOverviewLabel": "Lists overview",
+  "itemsInAListLabel": "Items in a list",
+  "appearance": "Appearance",
+  "themeLabel": "Theme",
+  "themeSystem": "System",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "colorThemeLabel": "Color theme",
+  "colorGreen": "Green",
+  "colorBlue": "Blue",
+  "colorOrange": "Orange",
+  "colorRed": "Red",
+  "colorRose": "Rose",
+  "colorViolet": "Violet",
+  "colorYellow": "Yellow",
+  "colorZinc": "Zinc",
+  "colorSlate": "Slate",
+  "colorStone": "Stone",
+  "colorGray": "Gray",
+  "colorNeutral": "Neutral",
+  "languageSectionTitle": "Language",
+  "languageLabel": "App language"
+}
