@@ -18,10 +18,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addItemPlaceholder => 'Add an item…';
 
   @override
-  String get noListsYet =>
-      'No lists yet. Tap \"New list\" above to create one.';
-
-  @override
   String get historyTooltip => 'History';
 
   @override

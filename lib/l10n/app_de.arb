@@ -3,7 +3,6 @@
   "settingsTooltip": "Einstellungen",
   "newList": "Neue Liste",
   "addItemPlaceholder": "Artikel hinzufügen …",
-  "noListsYet": "Noch keine Listen. Tippe oben auf „Neue Liste“, um eine zu erstellen.",
   "historyTooltip": "Verlauf",
   "deleteListTooltip": "Liste löschen",
   "listPageTitleFallback": "Liste",

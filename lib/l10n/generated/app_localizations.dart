@@ -116,12 +116,6 @@ abstract class AppLocalizations {
   /// **'Add an item…'**
   String get addItemPlaceholder;
 
-  /// No description provided for @noListsYet.
-  ///
-  /// In en, this message translates to:
-  /// **'No lists yet. Tap \"New list\" above to create one.'**
-  String get noListsYet;
-
   /// No description provided for @historyTooltip.
   ///
   /// In en, this message translates to:

@@ -3,7 +3,6 @@
   "settingsTooltip": "Settings",
   "newList": "New list",
   "addItemPlaceholder": "Add an item…",
-  "noListsYet": "No lists yet. Tap \"New list\" above to create one.",
   "historyTooltip": "History",
   "deleteListTooltip": "Delete list",
   "listPageTitleFallback": "List",

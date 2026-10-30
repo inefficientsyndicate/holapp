@@ -8,6 +8,7 @@ import '../widgets/app_toast.dart';
 import '../widgets/choose_list_dialog.dart';
 import '../widgets/create_list_dialog.dart';
 import '../widgets/grocery_list_tile.dart';
+import '../widgets/new_list_tile.dart';
 import 'settings_page.dart';
 
 class ListsOverviewPage extends WatchingWidget {
@@ -18,7 +19,6 @@ class ListsOverviewPage extends WatchingWidget {
     final quickAddController = createOnce(() => TextEditingController());
     final lists = watchValue((GroceryManager m) => m.lists);
     final columns = watchValue((GroceryManager m) => m.listsColumns);
-    final theme = ShadTheme.of(context);
     final l10n = AppLocalizations.of(context);
 
     return Scaffold(
@@ -38,39 +38,24 @@ class ListsOverviewPage extends WatchingWidget {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-            child: ShadButton(
-              width: double.infinity,
-              leading: const Icon(LucideIcons.plus),
-              onPressed: () => showCreateListDialog(context),
-              child: Text(l10n.newList),
-            ),
-          ),
           Expanded(
-            child: lists.isEmpty
-                ? Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(24),
-                      child: Text(
-                        l10n.noListsYet,
-                        textAlign: TextAlign.center,
-                        style: theme.textTheme.muted,
-                      ),
-                    ),
-                  )
-                : GridView.builder(
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: columns,
-                      mainAxisSpacing: 12,
-                      crossAxisSpacing: 12,
-                      childAspectRatio: 1.1,
-                    ),
-                    itemCount: lists.length,
-                    itemBuilder: (context, index) => GroceryListTile(list: lists[index]),
-                  ),
+            child: GridView.builder(
+              physics: const AlwaysScrollableScrollPhysics(),
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: columns,
+                mainAxisSpacing: 12,
+                crossAxisSpacing: 12,
+                childAspectRatio: 1.1,
+              ),
+              itemCount: lists.length + 1,
+              itemBuilder: (context, index) {
+                if (index == lists.length) {
+                  return NewListTile(onTap: () => showCreateListDialog(context));
+                }
+                return GroceryListTile(list: lists[index]);
+              },
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(16),

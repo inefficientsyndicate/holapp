@@ -18,10 +18,6 @@ class AppLocalizationsDe extends AppLocalizations {
   String get addItemPlaceholder => 'Artikel hinzufügen …';
 
   @override
-  String get noListsYet =>
-      'Noch keine Listen. Tippe oben auf „Neue Liste“, um eine zu erstellen.';
-
-  @override
   String get historyTooltip => 'Verlauf';
 
   @override
