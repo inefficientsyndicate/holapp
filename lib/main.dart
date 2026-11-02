@@ -8,6 +8,13 @@ import 'manager/grocery_manager.dart';
 import 'pages/lists_overview_page.dart';
 import 'theme/app_color_theme.dart';
 
+// Merged over shadcn's defaults (14px text, 8px vertical padding).
+const _inputTheme = ShadInputTheme(
+  style: TextStyle(fontSize: 16),
+  placeholderStyle: TextStyle(fontSize: 16),
+  padding: EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+);
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
@@ -33,10 +40,12 @@ class GroceriesApp extends WatchingWidget {
       theme: ShadThemeData(
         brightness: Brightness.light,
         colorScheme: colorTheme.light(),
+        inputTheme: _inputTheme,
       ),
       darkTheme: ShadThemeData(
         brightness: Brightness.dark,
         colorScheme: colorTheme.dark(),
+        inputTheme: _inputTheme,
       ),
       themeMode: themeMode,
       locale: locale,
