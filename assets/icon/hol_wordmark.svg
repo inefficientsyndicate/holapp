@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- Hand-drawn outlines, no font needed. Bounding box: x 93-931, y 255-767. -->
+  <!-- h -->
+  <rect x="93" y="255" width="92" height="512" rx="46" ry="46" fill="#FFFFFF"/>
+  <path fill="#FFFFFF" d="M93 596 A122 122 0 0 1 337 596 L337 721 A46 46 0 0 1 245 721 L245 596 A30 30 0 0 0 185 596 Z"/>
+  <!-- o -->
+  <path fill="#FFFFFF" fill-rule="evenodd" d="M373 620 A147 147 0 1 1 667 620 A147 147 0 1 1 373 620 Z M465 620 A55 55 0 1 0 575 620 A55 55 0 1 0 465 620 Z"/>
+  <!-- l -->
+  <rect x="703" y="255" width="92" height="512" rx="46" ry="46" fill="#FFFFFF"/>
+  <!-- . -->
+  <circle cx="877" cy="713" r="54" fill="#22C55E"/>
+</svg>
