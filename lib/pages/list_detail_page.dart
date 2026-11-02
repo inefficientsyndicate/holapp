@@ -163,6 +163,13 @@ class ListDetailPage extends WatchingWidget {
                 child: Icon(LucideIcons.plus),
               ),
               onChanged: (value) => query.value = value,
+              // Having this stops submitting from closing the keyboard, so
+              // items can be added in a row. Submitting nothing still closes it.
+              onEditingComplete: () {
+                if (addController.text.trim().isEmpty) {
+                  FocusScope.of(context).unfocus();
+                }
+              },
               onSubmitted: (value) {
                 final trimmed = value.trim();
                 if (trimmed.isEmpty) return;
