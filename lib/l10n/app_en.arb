@@ -24,6 +24,9 @@
   "changeListIconTooltip": "Change icon",
   "changeListIconDialogTitle": "Choose an icon",
   "changeListIconDialogDescription": "Tap the selected icon again to remove it.",
+  "renameListDialogTitle": "Rename list",
+  "renameItemDialogTitle": "Rename item",
+  "renameItemPlaceholder": "Item name",
   "chooseListTitle": "Add \"{itemName}\" to…",
   "@chooseListTitle": {
     "placeholders": {

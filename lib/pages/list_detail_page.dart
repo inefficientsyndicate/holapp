@@ -10,6 +10,7 @@ import '../widgets/app_toast.dart';
 import '../widgets/change_list_icon_dialog.dart';
 import '../widgets/delete_list_dialog.dart';
 import '../widgets/grocery_item_tile.dart';
+import '../widgets/rename_item_dialog.dart';
 import 'history_page.dart';
 
 class ListDetailPage extends WatchingWidget {
@@ -129,6 +130,7 @@ class ListDetailPage extends WatchingWidget {
                       return GroceryItemTile(
                         item: item,
                         onTap: () => di<GroceryManager>().removeItem(listId, item.id),
+                        onLongPress: () => showRenameItemDialog(context, list!, item),
                       );
                     },
                   ),

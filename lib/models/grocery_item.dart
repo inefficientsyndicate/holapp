@@ -9,6 +9,10 @@ class GroceryItem {
   final String name;
   final DateTime addedAt;
 
+  GroceryItem copyWith({String? name}) {
+    return GroceryItem(id: id, name: name ?? this.name, addedAt: addedAt);
+  }
+
   factory GroceryItem.fromJson(Map<String, dynamic> json) {
     return GroceryItem(
       id: json['id'] as String,

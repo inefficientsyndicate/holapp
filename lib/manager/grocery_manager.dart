@@ -117,12 +117,13 @@ class GroceryManager {
     return null;
   }
 
-  /// Whether [listId] already has an item named [name] (case-insensitive).
-  bool hasItem(String listId, String name) {
+  /// Whether [listId] already has an item named [name] (case-insensitive),
+  /// not counting [exceptItemId].
+  bool hasItem(String listId, String name, {String? exceptItemId}) {
     final key = name.trim().toLowerCase();
     final list = listById(listId);
     if (list == null) return false;
-    return list.items.any((item) => item.name.toLowerCase() == key);
+    return list.items.any((item) => item.id != exceptItemId && item.name.toLowerCase() == key);
   }
 
   /// Creates a new named list and returns its id.
@@ -138,6 +139,16 @@ class GroceryManager {
     _lists.value = [..._lists.value, list];
     _persistLists();
     return list.id;
+  }
+
+  void renameList(String listId, String name) {
+    final trimmed = name.trim();
+    if (trimmed.isEmpty) return;
+    _lists.value = [
+      for (final list in _lists.value)
+        if (list.id == listId) list.copyWith(name: trimmed) else list,
+    ];
+    _persistLists();
   }
 
   /// Sets [listId]'s icon. Pass `null` to remove it.
@@ -170,6 +181,22 @@ class GroceryManager {
       for (final list in _lists.value)
         if (list.id == listId)
           list.copyWith(items: [...list.items, item])
+        else
+          list,
+    ];
+    _persistLists();
+  }
+
+  void renameItem(String listId, String itemId, String name) {
+    final trimmed = name.trim();
+    if (trimmed.isEmpty) return;
+    _lists.value = [
+      for (final list in _lists.value)
+        if (list.id == listId)
+          list.copyWith(items: [
+            for (final item in list.items)
+              if (item.id == itemId) item.copyWith(name: trimmed) else item,
+          ])
         else
           list,
     ];

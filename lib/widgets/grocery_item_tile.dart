@@ -4,12 +4,18 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 import '../models/grocery_item.dart';
 
 /// A tappable tile for a single item. Tapping it marks the item as
-/// collected, which removes it from the list.
+/// collected, which removes it from the list; long-pressing it renames it.
 class GroceryItemTile extends StatelessWidget {
-  const GroceryItemTile({required this.item, required this.onTap, super.key});
+  const GroceryItemTile({
+    required this.item,
+    required this.onTap,
+    required this.onLongPress,
+    super.key,
+  });
 
   final GroceryItem item;
   final VoidCallback onTap;
+  final VoidCallback onLongPress;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +26,7 @@ class GroceryItemTile extends StatelessWidget {
       child: InkWell(
         borderRadius: theme.radius,
         onTap: onTap,
+        onLongPress: onLongPress,
         child: Container(
           decoration: BoxDecoration(
             borderRadius: theme.radius,

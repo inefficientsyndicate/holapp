@@ -212,6 +212,24 @@ abstract class AppLocalizations {
   /// **'Tap the selected icon again to remove it.'**
   String get changeListIconDialogDescription;
 
+  /// No description provided for @renameListDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename list'**
+  String get renameListDialogTitle;
+
+  /// No description provided for @renameItemDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename item'**
+  String get renameItemDialogTitle;
+
+  /// No description provided for @renameItemPlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Item name'**
+  String get renameItemPlaceholder;
+
   /// No description provided for @chooseListTitle.
   ///
   /// In en, this message translates to:

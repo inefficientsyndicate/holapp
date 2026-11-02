@@ -5,6 +5,7 @@ import '../l10n/generated/app_localizations.dart';
 import '../models/grocery_list.dart';
 import '../models/list_icons.dart';
 import '../pages/list_detail_page.dart';
+import 'rename_list_dialog.dart';
 
 class GroceryListTile extends StatelessWidget {
   const GroceryListTile({required this.list, super.key});
@@ -23,6 +24,7 @@ class GroceryListTile extends StatelessWidget {
         onTap: () => Navigator.of(context).push(
           MaterialPageRoute(builder: (_) => ListDetailPage(listId: list.id)),
         ),
+        onLongPress: () => showRenameListDialog(context, list),
         child: Container(
           decoration: BoxDecoration(
             borderRadius: theme.radius,

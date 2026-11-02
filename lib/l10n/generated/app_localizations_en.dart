@@ -76,6 +76,15 @@ class AppLocalizationsEn extends AppLocalizations {
       'Tap the selected icon again to remove it.';
 
   @override
+  String get renameListDialogTitle => 'Rename list';
+
+  @override
+  String get renameItemDialogTitle => 'Rename item';
+
+  @override
+  String get renameItemPlaceholder => 'Item name';
+
+  @override
   String chooseListTitle(String itemName) {
     return 'Add \"$itemName\" to…';
   }
