@@ -1,13 +1,16 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' show Locale, ThemeMode;
+import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/grocery_item.dart';
 import '../models/grocery_list.dart';
 import '../models/history_entry.dart';
 import '../theme/app_color_theme.dart';
+import '../theme/app_icon_variant.dart';
 
 /// Holds all grocery lists, the removal history and the grid-size
 /// preferences, and persists them to [SharedPreferences].
@@ -19,6 +22,7 @@ class GroceryManager {
   static const _themeModeKey = 'groceries.themeMode';
   static const _localeKey = 'groceries.locale';
   static const _colorThemeKey = 'groceries.colorTheme';
+  static const _appIconChannel = MethodChannel('holapp/app_icon');
 
   late SharedPreferences _prefs;
   int _idCounter = 0;
@@ -44,6 +48,11 @@ class GroceryManager {
 
   final _colorTheme = ValueNotifier<AppColorTheme>(AppColorTheme.green);
   ValueListenable<AppColorTheme> get colorTheme => _colorTheme;
+
+  /// `null` means this platform can't change its icon. The OS remembers the
+  /// choice, so unlike the other settings it isn't kept in [SharedPreferences].
+  final _appIcon = ValueNotifier<AppIconVariant?>(null);
+  ValueListenable<AppIconVariant?> get appIcon => _appIcon;
 
   Future<GroceryManager> init() async {
     _prefs = await SharedPreferences.getInstance();
@@ -82,7 +91,21 @@ class GroceryManager {
         orElse: () => AppColorTheme.green,
       );
     }
+    // Not awaited: the splash screen shouldn't wait on a setting only Settings
+    // shows, which stays hidden until this completes.
+    unawaited(_loadAppIcon());
     return this;
+  }
+
+  Future<void> _loadAppIcon() async {
+    try {
+      final name = await _appIconChannel.invokeMethod<String>('getIcon');
+      _appIcon.value = AppIconVariant.values.asNameMap()[name];
+    } on MissingPluginException {
+      // This platform has no native side, so the setting stays hidden.
+    } on PlatformException {
+      // Likewise: without a known current icon there's nothing to show.
+    }
   }
 
   String _newId() => '${DateTime.now().microsecondsSinceEpoch}_${_idCounter++}';
@@ -245,6 +268,19 @@ class GroceryManager {
   void setColorTheme(AppColorTheme theme) {
     _colorTheme.value = theme;
     _prefs.setString(_colorThemeKey, theme.name);
+  }
+
+  /// Returns whether the OS accepted the change; the selection only moves if
+  /// it did.
+  Future<bool> setAppIcon(AppIconVariant icon) async {
+    if (icon == _appIcon.value) return true;
+    try {
+      await _appIconChannel.invokeMethod<void>('setIcon', icon.name);
+    } on PlatformException {
+      return false;
+    }
+    _appIcon.value = icon;
+    return true;
   }
 
   void _persistLists() {

@@ -50,6 +50,11 @@
   "colorStone": "Stein",
   "colorGray": "Grau",
   "colorNeutral": "Neutral",
+  "appIconLabel": "App-Symbol",
+  "appIconMidnight": "Mitternacht",
+  "appIconLight": "Hell",
+  "appIconGreen": "Grün",
+  "appIconChangeFailed": "Das App-Symbol konnte nicht geändert werden.",
   "languageSectionTitle": "Sprache",
   "languageLabel": "App-Sprache"
 }

@@ -180,6 +180,22 @@ class AppLocalizationsDe extends AppLocalizations {
   String get colorNeutral => 'Neutral';
 
   @override
+  String get appIconLabel => 'App-Symbol';
+
+  @override
+  String get appIconMidnight => 'Mitternacht';
+
+  @override
+  String get appIconLight => 'Hell';
+
+  @override
+  String get appIconGreen => 'Grün';
+
+  @override
+  String get appIconChangeFailed =>
+      'Das App-Symbol konnte nicht geändert werden.';
+
+  @override
   String get languageSectionTitle => 'Sprache';
 
   @override

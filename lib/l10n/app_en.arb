@@ -82,6 +82,11 @@
   "colorStone": "Stone",
   "colorGray": "Gray",
   "colorNeutral": "Neutral",
+  "appIconLabel": "App icon",
+  "appIconMidnight": "Midnight",
+  "appIconLight": "Light",
+  "appIconGreen": "Green",
+  "appIconChangeFailed": "Couldn't change the app icon.",
   "languageSectionTitle": "Language",
   "languageLabel": "App language"
 }

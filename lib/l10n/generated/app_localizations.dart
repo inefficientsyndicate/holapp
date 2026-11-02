@@ -398,6 +398,36 @@ abstract class AppLocalizations {
   /// **'Neutral'**
   String get colorNeutral;
 
+  /// No description provided for @appIconLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'App icon'**
+  String get appIconLabel;
+
+  /// No description provided for @appIconMidnight.
+  ///
+  /// In en, this message translates to:
+  /// **'Midnight'**
+  String get appIconMidnight;
+
+  /// No description provided for @appIconLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get appIconLight;
+
+  /// No description provided for @appIconGreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Green'**
+  String get appIconGreen;
+
+  /// No description provided for @appIconChangeFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t change the app icon.'**
+  String get appIconChangeFailed;
+
   /// No description provided for @languageSectionTitle.
   ///
   /// In en, this message translates to:

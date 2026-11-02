@@ -4,6 +4,9 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../l10n/generated/app_localizations.dart';
 import '../manager/grocery_manager.dart';
+import '../theme/app_icon_variant.dart';
+import '../widgets/app_icon_selector.dart';
+import '../widgets/app_toast.dart';
 import '../widgets/color_theme_selector.dart';
 import '../widgets/columns_selector.dart';
 import '../widgets/language_selector.dart';
@@ -19,6 +22,7 @@ class SettingsPage extends WatchingWidget {
     final mode = watchValue((GroceryManager m) => m.themeMode);
     final colorTheme = watchValue((GroceryManager m) => m.colorTheme);
     final locale = watchValue((GroceryManager m) => m.locale);
+    final appIcon = watchValue((GroceryManager m) => m.appIcon);
     final theme = ShadTheme.of(context);
     final l10n = AppLocalizations.of(context);
 
@@ -65,6 +69,16 @@ class SettingsPage extends WatchingWidget {
               onChanged: (value) => di<GroceryManager>().setColorTheme(value),
             ),
           ),
+          if (appIcon != null) ...[
+            const SizedBox(height: 16),
+            _SettingRow(
+              label: l10n.appIconLabel,
+              child: AppIconSelector(
+                value: appIcon,
+                onChanged: (value) => _changeAppIcon(context, value),
+              ),
+            ),
+          ],
           const SizedBox(height: 32),
           const ShadSeparator.horizontal(),
           const SizedBox(height: 32),
@@ -80,6 +94,14 @@ class SettingsPage extends WatchingWidget {
         ],
       ),
     );
+  }
+
+  Future<void> _changeAppIcon(BuildContext context, AppIconVariant icon) async {
+    final message = AppLocalizations.of(context).appIconChangeFailed;
+    final changed = await di<GroceryManager>().setAppIcon(icon);
+    if (!changed && context.mounted) {
+      showAppToast(context, message, aboveInputBar: false);
+    }
   }
 }
 
