@@ -182,6 +182,36 @@ abstract class AppLocalizations {
   /// **'e.g. Weekly groceries'**
   String get newListPlaceholder;
 
+  /// No description provided for @newListIconLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Icon (optional)'**
+  String get newListIconLabel;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @changeListIconTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Change icon'**
+  String get changeListIconTooltip;
+
+  /// No description provided for @changeListIconDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose an icon'**
+  String get changeListIconDialogTitle;
+
+  /// No description provided for @changeListIconDialogDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the selected icon again to remove it.'**
+  String get changeListIconDialogDescription;
+
   /// No description provided for @chooseListTitle.
   ///
   /// In en, this message translates to:

@@ -61,6 +61,22 @@ class AppLocalizationsDe extends AppLocalizations {
   String get newListPlaceholder => 'z. B. Wocheneinkauf';
 
   @override
+  String get newListIconLabel => 'Icon (optional)';
+
+  @override
+  String get save => 'Speichern';
+
+  @override
+  String get changeListIconTooltip => 'Icon ändern';
+
+  @override
+  String get changeListIconDialogTitle => 'Icon auswählen';
+
+  @override
+  String get changeListIconDialogDescription =>
+      'Tippe das ausgewählte Icon erneut an, um es zu entfernen.';
+
+  @override
   String chooseListTitle(String itemName) {
     return '„$itemName“ hinzufügen zu…';
   }

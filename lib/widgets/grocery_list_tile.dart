@@ -3,6 +3,7 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../l10n/generated/app_localizations.dart';
 import '../models/grocery_list.dart';
+import '../models/list_icons.dart';
 import '../pages/list_detail_page.dart';
 
 class GroceryListTile extends StatelessWidget {
@@ -13,6 +14,7 @@ class GroceryListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = ShadTheme.of(context);
+    final icon = listIcons[list.icon];
     return Material(
       color: Colors.transparent,
       borderRadius: theme.radius,
@@ -38,9 +40,22 @@ class GroceryListTile extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
-              Text(
-                AppLocalizations.of(context).itemCount(list.items.length),
-                style: theme.textTheme.muted,
+              Row(
+                children: [
+                  if (icon != null) ...[
+                    Icon(icon, size: 20, color: theme.colorScheme.primary),
+                    const SizedBox(width: 8),
+                  ],
+                  Expanded(
+                    child: Text(
+                      AppLocalizations.of(context).itemCount(list.items.length),
+                      style: theme.textTheme.muted,
+                      textAlign: TextAlign.end,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

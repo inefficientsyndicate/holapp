@@ -60,6 +60,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get newListPlaceholder => 'e.g. Weekly groceries';
 
   @override
+  String get newListIconLabel => 'Icon (optional)';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get changeListIconTooltip => 'Change icon';
+
+  @override
+  String get changeListIconDialogTitle => 'Choose an icon';
+
+  @override
+  String get changeListIconDialogDescription =>
+      'Tap the selected icon again to remove it.';
+
+  @override
   String chooseListTitle(String itemName) {
     return 'Add \"$itemName\" to…';
   }

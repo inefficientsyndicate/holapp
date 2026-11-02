@@ -5,7 +5,9 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 import '../l10n/generated/app_localizations.dart';
 import '../manager/grocery_manager.dart';
 import '../models/grocery_list.dart';
+import '../models/list_icons.dart';
 import '../widgets/app_toast.dart';
+import '../widgets/change_list_icon_dialog.dart';
 import '../widgets/delete_list_dialog.dart';
 import '../widgets/grocery_item_tile.dart';
 import 'history_page.dart';
@@ -77,6 +79,11 @@ class ListDetailPage extends WatchingWidget {
         centerTitle: false,
         title: Text(list.name),
         actions: [
+          IconButton(
+            tooltip: l10n.changeListIconTooltip,
+            icon: Icon(listIcons[list.icon] ?? LucideIcons.imagePlus),
+            onPressed: () => showChangeListIconDialog(context, list!),
+          ),
           IconButton(
             tooltip: l10n.historyTooltip,
             icon: const Icon(LucideIcons.history),

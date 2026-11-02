@@ -103,17 +103,27 @@ class GroceryManager {
   }
 
   /// Creates a new named list and returns its id.
-  String createList(String name) {
+  String createList(String name, {String? icon}) {
     final trimmed = name.trim();
     final list = GroceryList(
       id: _newId(),
       name: trimmed,
       items: const [],
       createdAt: DateTime.now(),
+      icon: icon,
     );
     _lists.value = [..._lists.value, list];
     _persistLists();
     return list.id;
+  }
+
+  /// Sets [listId]'s icon. Pass `null` to remove it.
+  void setListIcon(String listId, String? icon) {
+    _lists.value = [
+      for (final list in _lists.value)
+        if (list.id == listId) list.copyWith(icon: () => icon) else list,
+    ];
+    _persistLists();
   }
 
   /// Deletes [listId] and its history.

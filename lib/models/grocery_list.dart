@@ -1,4 +1,5 @@
 import 'grocery_item.dart';
+import 'list_icons.dart';
 
 class GroceryList {
   const GroceryList({
@@ -6,6 +7,7 @@ class GroceryList {
     required this.name,
     required this.items,
     required this.createdAt,
+    this.icon,
   });
 
   final String id;
@@ -13,12 +15,21 @@ class GroceryList {
   final List<GroceryItem> items;
   final DateTime createdAt;
 
-  GroceryList copyWith({String? name, List<GroceryItem>? items}) {
+  /// Key into [listIcons], or `null` if the list has no icon.
+  final String? icon;
+
+  /// [icon] is a function so that passing one returning `null` clears the icon.
+  GroceryList copyWith({
+    String? name,
+    List<GroceryItem>? items,
+    String? Function()? icon,
+  }) {
     return GroceryList(
       id: id,
       name: name ?? this.name,
       items: items ?? this.items,
       createdAt: createdAt,
+      icon: icon != null ? icon() : this.icon,
     );
   }
 
@@ -30,6 +41,7 @@ class GroceryList {
           .map((e) => GroceryItem.fromJson(e as Map<String, dynamic>))
           .toList(),
       createdAt: DateTime.parse(json['createdAt'] as String),
+      icon: json['icon'] as String?,
     );
   }
 
@@ -38,5 +50,6 @@ class GroceryList {
         'name': name,
         'items': items.map((e) => e.toJson()).toList(),
         'createdAt': createdAt.toIso8601String(),
+        if (icon != null) 'icon': icon,
       };
 }

@@ -19,6 +19,11 @@
   "newListDialogTitle": "New list",
   "newListDialogDescription": "Give your grocery list a name.",
   "newListPlaceholder": "e.g. Weekly groceries",
+  "newListIconLabel": "Icon (optional)",
+  "save": "Save",
+  "changeListIconTooltip": "Change icon",
+  "changeListIconDialogTitle": "Choose an icon",
+  "changeListIconDialogDescription": "Tap the selected icon again to remove it.",
   "chooseListTitle": "Add \"{itemName}\" to…",
   "@chooseListTitle": {
     "placeholders": {

@@ -4,11 +4,13 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 
 import '../l10n/generated/app_localizations.dart';
 import '../manager/grocery_manager.dart';
+import 'list_icon_picker.dart';
 
 /// Shows a dialog asking for a new list name, creates the list and
 /// returns its id, or `null` if the user cancelled.
 Future<String?> showCreateListDialog(BuildContext context) async {
   final controller = TextEditingController();
+  String? icon;
   final confirmed = await showShadDialog<bool>(
     context: context,
     builder: (context) {
@@ -28,11 +30,21 @@ Future<String?> showCreateListDialog(BuildContext context) async {
         ],
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 12),
-          child: ShadInput(
-            controller: controller,
-            placeholder: Text(l10n.newListPlaceholder),
-            autofocus: true,
-            onSubmitted: (_) => Navigator.of(context).pop(true),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ShadInput(
+                controller: controller,
+                placeholder: Text(l10n.newListPlaceholder),
+                autofocus: true,
+                onSubmitted: (_) => Navigator.of(context).pop(true),
+              ),
+              const SizedBox(height: 12),
+              Text(l10n.newListIconLabel, style: ShadTheme.of(context).textTheme.muted),
+              const SizedBox(height: 8),
+              ListIconPicker(onChanged: (value) => icon = value),
+            ],
           ),
         ),
       );
@@ -43,7 +55,7 @@ Future<String?> showCreateListDialog(BuildContext context) async {
   controller.dispose();
 
   if (confirmed == true && name.isNotEmpty) {
-    return di<GroceryManager>().createList(name);
+    return di<GroceryManager>().createList(name, icon: icon);
   }
   return null;
 }
