@@ -1,30 +1,28 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
+import 'package:flutter_it/flutter_it.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:holapp/locator.dart';
 import 'package:holapp/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  // Deliberately not in setUp(): that callback runs outside the async test
+  // zone testWidgets() uses for its body, so a Future started there never
+  // gets ticked forward by tester.pump() and the test hangs waiting on it.
+  tearDown(() => di.reset());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  testWidgets('shows the lists overview once ready', (WidgetTester tester) async {
+    SharedPreferences.setMockInitialValues({});
+    configureDependencies();
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    await tester.pumpWidget(const GroceriesApp());
+    // The splash screen shows an indeterminate spinner, so pumpAndSettle
+    // would never settle; pump a few frames for the async init to finish.
+    for (var i = 0; i < 10 && find.text('hol.').evaluate().isEmpty; i++) {
+      await tester.pump(const Duration(milliseconds: 50));
+    }
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text('hol.'), findsOneWidget);
+    expect(find.text('New list'), findsOneWidget);
   });
 }

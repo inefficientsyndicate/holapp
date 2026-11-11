@@ -1,0 +1,95 @@
+{
+  "@@locale": "en",
+  "settingsTooltip": "Settings",
+  "newList": "New list",
+  "addItemPlaceholder": "Add an item…",
+  "historyTooltip": "History",
+  "deleteListTooltip": "Delete list",
+  "listPageTitleFallback": "List",
+  "listNotFound": "This list no longer exists.",
+  "nothingHereYet": "Nothing here yet. Add items below — tap one to mark it collected.",
+  "itemCount": "{count, plural, one{1 item} other{{count} items}}",
+  "@itemCount": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "cancel": "Cancel",
+  "create": "Create",
+  "newListDialogTitle": "New list",
+  "newListDialogDescription": "Give your grocery list a name.",
+  "newListPlaceholder": "e.g. Weekly groceries",
+  "newListIconLabel": "Icon (optional)",
+  "save": "Save",
+  "changeListIconTooltip": "Change icon",
+  "changeListIconDialogTitle": "Choose an icon",
+  "changeListIconDialogDescription": "Tap the selected icon again to remove it.",
+  "renameListDialogTitle": "Rename list",
+  "renameItemDialogTitle": "Rename item",
+  "renameItemPlaceholder": "Item name",
+  "chooseListTitle": "Add \"{itemName}\" to…",
+  "@chooseListTitle": {
+    "placeholders": {
+      "itemName": { "type": "String" }
+    }
+  },
+  "chooseListDescription": "Choose a list for this item.",
+  "deleteListDialogTitle": "Delete this list?",
+  "deleteListDialogDescription": "This will permanently delete \"{listName}\" and all of its items and history.",
+  "@deleteListDialogDescription": {
+    "placeholders": {
+      "listName": { "type": "String" }
+    }
+  },
+  "delete": "Delete",
+  "historyPageTitle": "{listName} · History",
+  "@historyPageTitle": {
+    "placeholders": {
+      "listName": { "type": "String" }
+    }
+  },
+  "nothingCollectedYet": "Nothing collected yet.",
+  "addedToListSnackbar": "Added \"{itemName}\" to {listName}",
+  "@addedToListSnackbar": {
+    "placeholders": {
+      "itemName": { "type": "String" },
+      "listName": { "type": "String" }
+    }
+  },
+  "itemAlreadyExistsSnackbar": "\"{itemName}\" is already on {listName}",
+  "@itemAlreadyExistsSnackbar": {
+    "placeholders": {
+      "itemName": { "type": "String" },
+      "listName": { "type": "String" }
+    }
+  },
+  "settingsPageTitle": "Settings",
+  "tilesPerRow": "Tiles per row",
+  "listsOverviewLabel": "Lists overview",
+  "itemsInAListLabel": "Items in a list",
+  "appearance": "Appearance",
+  "themeLabel": "Theme",
+  "themeSystem": "System",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "colorThemeLabel": "Color theme",
+  "colorGreen": "Green",
+  "colorBlue": "Blue",
+  "colorOrange": "Orange",
+  "colorRed": "Red",
+  "colorRose": "Rose",
+  "colorViolet": "Violet",
+  "colorYellow": "Yellow",
+  "colorZinc": "Zinc",
+  "colorSlate": "Slate",
+  "colorStone": "Stone",
+  "colorGray": "Gray",
+  "colorNeutral": "Neutral",
+  "appIconLabel": "App icon",
+  "appIconMidnight": "Midnight",
+  "appIconLight": "Light",
+  "appIconGreen": "Green",
+  "appIconChangeFailed": "Couldn't change the app icon.",
+  "languageSectionTitle": "Language",
+  "languageLabel": "App language"
+}
