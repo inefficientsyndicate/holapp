@@ -48,6 +48,15 @@ class GroceriesApp extends WatchingWidget {
         inputTheme: _inputTheme,
       ),
       themeMode: themeMode,
+      // Flutter only drops text focus on outside taps for mouse/stylus on
+      // mobile; make touch taps anywhere else close the keyboard too. Taps
+      // inside the field's TapRegion group (see groupId) don't count.
+      actions: {
+        ...WidgetsApp.defaultActions,
+        EditableTextTapOutsideIntent: CallbackAction<EditableTextTapOutsideIntent>(
+          onInvoke: (intent) => intent.focusNode.unfocus(),
+        ),
+      },
       locale: locale,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,

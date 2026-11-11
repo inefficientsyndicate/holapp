@@ -13,6 +13,10 @@ import '../widgets/grocery_item_tile.dart';
 import '../widgets/rename_item_dialog.dart';
 import 'history_page.dart';
 
+// Shared by the add field and its suggestion chips, so tapping a chip
+// doesn't count as a tap outside the field and close the keyboard.
+const _addFieldTapGroup = #addItemField;
+
 class ListDetailPage extends WatchingWidget {
   const ListDetailPage({required this.listId, super.key});
 
@@ -136,27 +140,32 @@ class ListDetailPage extends WatchingWidget {
                   ),
           ),
           if (queryText.trim().isNotEmpty && suggestions.isNotEmpty)
-            SizedBox(
-              height: 44,
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                itemCount: suggestions.length,
-                separatorBuilder: (context, index) => const SizedBox(width: 8),
-                itemBuilder: (context, index) {
-                  final suggestion = suggestions[index];
-                  return ShadButton.outline(
-                    onPressed: () => addFromSuggestion(suggestion),
-                    leading: const Icon(LucideIcons.history, size: 14),
-                    child: Text(suggestion),
-                  );
-                },
+            TextFieldTapRegion(
+              groupId: _addFieldTapGroup,
+              child: SizedBox(
+                height: 44,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  itemCount: suggestions.length,
+                  separatorBuilder: (context, index) => const SizedBox(width: 8),
+                  itemBuilder: (context, index) {
+                    final suggestion = suggestions[index];
+                    return ShadButton.outline(
+                      onPressed: () => addFromSuggestion(suggestion),
+                      leading: const Icon(LucideIcons.history, size: 14),
+                      child: Text(suggestion),
+                    );
+                  },
+                ),
               ),
             ),
           Padding(
             padding: const EdgeInsets.all(16),
             child: ShadInput(
               controller: addController,
+              textCapitalization: TextCapitalization.sentences,
+              groupId: _addFieldTapGroup,
               placeholder: Text(l10n.addItemPlaceholder),
               leading: const Padding(
                 padding: EdgeInsets.only(left: 4),

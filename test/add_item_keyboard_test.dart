@@ -95,4 +95,33 @@ void main() {
     expect(tester.testTextInput.isVisible, isFalse);
     expect(itemNames(), isEmpty);
   });
+
+  testWidgets('tapping outside the field closes the keyboard', (tester) async {
+    await openList(tester);
+
+    await tester.showKeyboard(find.byType(EditableText));
+    await tester.pumpAndSettle();
+    expect(fieldHasFocus(tester), isTrue);
+
+    await tester.tapAt(const Offset(200, 200));
+    await tester.pumpAndSettle();
+
+    expect(fieldHasFocus(tester), isFalse);
+    expect(tester.testTextInput.isVisible, isFalse);
+  });
+
+  testWidgets('tapping outside the quick-add field closes the keyboard', (tester) async {
+    await openList(tester);
+    await tester.pageBack();
+    await tester.pumpAndSettle();
+
+    await tester.showKeyboard(find.byType(EditableText));
+    await tester.pumpAndSettle();
+    expect(fieldHasFocus(tester), isTrue);
+
+    await tester.tap(find.text('hol.'));
+    await tester.pumpAndSettle();
+
+    expect(fieldHasFocus(tester), isFalse);
+  });
 }

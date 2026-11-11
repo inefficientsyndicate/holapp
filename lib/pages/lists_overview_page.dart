@@ -61,6 +61,7 @@ class ListsOverviewPage extends WatchingWidget {
             padding: const EdgeInsets.all(16),
             child: ShadInput(
               controller: quickAddController,
+              textCapitalization: TextCapitalization.sentences,
               placeholder: Text(l10n.addItemPlaceholder),
               leading: const Padding(
                 padding: EdgeInsets.only(left: 4),

@@ -33,6 +33,7 @@ Future<String?> showRenameDialog(
           padding: const EdgeInsets.symmetric(vertical: 12),
           child: ShadInput(
             controller: controller,
+            textCapitalization: TextCapitalization.sentences,
             placeholder: Text(placeholder),
             autofocus: true,
             onSubmitted: (_) => Navigator.of(context).pop(true),

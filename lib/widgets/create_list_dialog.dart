@@ -36,6 +36,7 @@ Future<String?> showCreateListDialog(BuildContext context) async {
             children: [
               ShadInput(
                 controller: controller,
+                textCapitalization: TextCapitalization.sentences,
                 placeholder: Text(l10n.newListPlaceholder),
                 autofocus: true,
                 onSubmitted: (_) => Navigator.of(context).pop(true),
